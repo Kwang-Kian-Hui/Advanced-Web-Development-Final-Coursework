@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from baseuser import views as buviews
+from base import views as bviews
 
 urlpatterns = [
-    path('', buviews.home_page, name='home'),
+    path('', bviews.home_page, name='home'),
     path('admin/', admin.site.urls),
 ]
 

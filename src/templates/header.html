@@ -31,7 +31,7 @@
 
                             <!-- profile -->
                             <div class="btn-group dropleft">
-                                <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{% static 'project_files/default_profile.png' %}" alt="default profile logo" width="25" height="25">
+                                <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile_img.url}}" alt="default profile logo" width="25" height="25">
                                 <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
