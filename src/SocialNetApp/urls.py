@@ -18,10 +18,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from base import views as bviews
+from users import views as uviews
+
 
 urlpatterns = [
     path('', bviews.home_page, name='home'),
     path('admin/', admin.site.urls),
+    path('register/', uviews.registration_view, name="register")
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
