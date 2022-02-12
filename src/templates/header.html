@@ -35,14 +35,14 @@
                                 <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 {% else %}
-                    <a class="p-2 text-group-2" href="#">Login</a>
+                    <a class="p-2 text-group-2" href="{% url 'login' %}">Login</a>
                     <a class="p-2 text-group-2" href="{% url 'register' %}">Register</a>
                 {% endif %}
             </nav>
