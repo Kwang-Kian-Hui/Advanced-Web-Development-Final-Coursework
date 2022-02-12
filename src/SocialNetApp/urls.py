@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
+from django.conf.urls import include
 from django.conf.urls.static import static
 from base import views as bviews
 from users import views as uviews
@@ -27,6 +28,7 @@ urlpatterns = [
     path('login/', uviews.login_view, name="login"),
     path('logout/', uviews.logout_view, name="logout"),
     path('register/', uviews.registration_view, name="register"),
+    path('profile/', include('users.urls', namespace='profile')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
