@@ -24,7 +24,9 @@ from users import views as uviews
 urlpatterns = [
     path('', bviews.home_page, name='home'),
     path('admin/', admin.site.urls),
-    path('register/', uviews.registration_view, name="register")
+    path('login/', uviews.login_view, name="login"),
+    path('logout/', uviews.logout_view, name="logout"),
+    path('register/', uviews.registration_view, name="register"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
