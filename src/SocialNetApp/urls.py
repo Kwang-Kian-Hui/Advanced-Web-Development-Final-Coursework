@@ -27,8 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', uviews.login_view, name="login"),
     path('logout/', uviews.logout_view, name="logout"),
-    path('register/', uviews.registration_view, name="register"),
     path('profile/', include('users.urls', namespace='profile')),
+    path('register/', uviews.registration_view, name="register"),
+    path('search/', uviews.user_search_view, name="search")
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
