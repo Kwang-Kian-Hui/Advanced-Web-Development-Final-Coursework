@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 from users.models import *
-from users.forms import UserRegistrationForm, UserAuthenticationForm
+from users.forms import UserRegistrationForm, UserAuthenticationForm, UserUpdateForm
 
 def registration_view(request, *args, **kwargs):
     user = request.user
@@ -100,3 +100,43 @@ def user_search_view(request, *args, **kwargs):
                 profiles.append((result, False))
             context['profiles'] = profiles
     return render(request, "users/user_search.html", context)
+
+def edit_user_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    user_username = kwargs.get("username")
+    try:
+        user = User.objects.get(username=user_username)
+    except User.DoesNotExist:
+        return HttpResponse("An error occurred.")
+    if user.username != request.user.username:
+        return HttpResponse("Unable to edit another user's profile.")
+    
+    context = {}
+    if request.POST:
+        form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("users:user_profile", user_username=user.username)
+        else:
+            form = UserUpdateForm(request.POST, instance=request.user,
+                initial = {
+                    "id": user.id,
+                    "email": user.email,
+                    "username": user.username,
+                    "profile_img": user.profile_img,
+                }
+            )
+            context['form'] = form
+    else:
+        form = UserUpdateForm(
+            initial = {
+                "id": user.id,
+                "email": user.email,
+                "username": user.username,
+                "profile_img": user.profile_img,
+            }
+        )
+        context['form'] = form
+    context['max_upload_memory_size'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
+    return render(request, "users/edit_user.html", context)

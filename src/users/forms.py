@@ -17,7 +17,7 @@ class UserRegistrationForm(UserCreationForm):
 
         try:
             user = User.objects.get(email=email)
-        except Exception as e:
+        except User.DoesNotExist:
             # exception is thrown if no matching objects found
             return email
         raise forms.ValidationError(f"{email} is already in use. Please use another email.")
@@ -26,7 +26,7 @@ class UserRegistrationForm(UserCreationForm):
         username = self.cleaned_data['username']
         try:
             User.objects.get(username=username)
-        except Exception as e:
+        except User.DoesNotExist:
             # exception is thrown if no matching object found
             return username
         raise forms.ValidationError(f"{username} is already in use. Please use another username.")
@@ -52,3 +52,37 @@ class UserAuthenticationForm(forms.ModelForm):
             password = self.cleaned_data['password']
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError("Your email or password is incorrect.")
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'profile_img')
+    
+    # clean functions
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            # exception is thrown if no matching objects found
+            return email
+        raise forms.ValidationError(f"{email} is already in use. Please use another email.")
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+            User.objects.get(username=username)
+        except User.DoesNotExist:
+            # exception is thrown if no matching object found
+            return username
+        raise forms.ValidationError(f"{username} is already in use. Please use another username.")
+
+    def save(self, commit=True):
+        user = super(UserUpdateForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        user.username = self.cleaned_data['username']
+        user.profile_img = self.cleaned_data['profile_img']
+        if commit:
+            User.save()
+        return user

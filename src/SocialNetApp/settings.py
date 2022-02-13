@@ -143,3 +143,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 BASE_URL = "http://127.0.0.1:8000"
+
+# default max upload size is 2621440 (2.5 MB), info from: https://docs.djangoproject.com/en/4.0/ref/settings/
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1048576 # 1 MB -> 1024 * 1024
