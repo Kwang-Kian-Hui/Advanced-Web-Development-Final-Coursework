@@ -88,3 +88,15 @@ def profile_view(request, *args, **kwargs):
         context['BASE_URL'] = settings.BASE_URL
 
         return render(request, "users/profile.html", context)
+
+def user_search_view(request, *args, **kwargs):
+    context = {}
+    if request.method == "GET":
+        search_query = request.GET.get("q")
+        if len(search_query) > 0:
+            search_results = User.objects.filter(username__icontains=search_query)
+            profiles = []
+            for result in search_results:
+                profiles.append((result, False))
+            context['profiles'] = profiles
+    return render(request, "users/user_search.html", context)
