@@ -35,7 +35,7 @@
                                 <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                     <!-- href notes: 'profile' comes from path name in SocialNetApp urls.py-->
                                     <!-- href notes: 'user_profile' comes from path name in users/urls.py-->
-                                    <a class="dropdown-item" href="{% url 'profile:user_profile' username=request.user.username %}">Profile</a>
+                                    <a class="dropdown-item" href="{% url 'profile:user_profile' user_id=request.user.id %}">Profile</a>
                                     <!-- <a class="dropdown-item" href="#">Settings</a> -->
                                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                                 </div>

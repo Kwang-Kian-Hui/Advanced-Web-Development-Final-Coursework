@@ -46,12 +46,12 @@
 		<div class="">
 		{% for profile in profiles %}
 		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-			<a class="profile-link" href="{% url 'users:user_profile' username=profile.0.username %}">
+			<a class="profile-link" href="{% url 'users:user_profile' user_id=profile.0.id %}">
 				<div class="card-image m-2">
 					<img class="img-fluid profile-image" src="{{profile.0.profile_img.url}}" alt="">
 				</div>
 			</a>
-			<a class="profile-link" href="{% url 'users:user_profile' username=profile.0.username %}">
+			<a class="profile-link" href="{% url 'users:user_profile' user_id=profile.0.id %}">
 				<div class="card-center px-2">
 					<h4 class="card-title">{{profile.0.username}}</h4>
 					{% if profile.1 %}
