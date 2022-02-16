@@ -84,5 +84,5 @@ class UserUpdateForm(forms.ModelForm):
         user.username = self.cleaned_data['username']
         user.profile_img = self.cleaned_data['profile_img']
         if commit:
-            User.save()
+            user.save()
         return user

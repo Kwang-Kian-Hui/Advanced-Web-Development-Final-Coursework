@@ -7,6 +7,12 @@
 		max-width: 250px;
 		height: auto;
 	}
+	.profile-image{
+		max-width: 250px;
+		max-height: 250px;
+		min-width: 250px;
+		min-height: 250px;
+	}
 	.field-heading{
 		color: var(--secondary-text-color);
 	}
@@ -83,7 +89,7 @@
 		  		<h5>{{username}}</h5>
 
 				{% if is_self %}
-				<a class="mt-4 btn btn-primary" href="{% url 'users:edit_user' username=username %}">Update</a>
+				<a class="mt-4 btn btn-primary" href="{% url 'users:edit_user' user_id=id %}">Update</a>
 				<div class="d-flex flex-column mt-4"></div>
 				{% endif %}
 
