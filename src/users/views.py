@@ -5,6 +5,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
+from friends.models import *
+from friends.friend_request_status import *
+from friends.utils import *
 from users.models import *
 from users.forms import UserRegistrationForm, UserAuthenticationForm, UserUpdateForm
 import os
@@ -73,23 +76,58 @@ def profile_view(request, *args, **kwargs):
     context = {}
     userid_search = kwargs.get("user_id")
     try:
-        user = User.objects.get(pk=userid_search)
+        viewed_user = User.objects.get(pk=userid_search)
     except User.DoesNotExist:
         return HttpResponse("No user of this id found.")
     if User:
-        context['id'] = user.id
-        context['email'] = user.email
-        context['username'] = user.username
-        context['profile_img'] = user.profile_img.url
+        context['id'] = viewed_user.id
+        context['email'] = viewed_user.email
+        context['username'] = viewed_user.username
+        context['profile_img'] = viewed_user.profile_img.url
         
+        try:
+            friend_list = FriendList.objects.get(user=viewed_user)
+        except FriendList.DoesNotExist:
+            friend_list = FriendList(user=viewed_user)
+            friend_list.save()
+        friends = friend_list.friends.all()
+        context['friends'] = friends
+
         is_self = True
         is_friend = False
         curr_user = request.user
-        if (curr_user.is_authenticated and curr_user != user) or not curr_user.is_authenticated:
+        # NO_FRIEND_REQUEST = 0
+        # FRIEND_REQUEST_TO_USER = 1
+        # FRIEND_REQUEST_FROM_USER = 2
+        friend_requests = None
+        request_sent = FriendRequestStatus.NO_FRIEND_REQUEST.value
+        if (curr_user.is_authenticated and curr_user != viewed_user):
             is_self = False
+            if friends.filter(pk=viewed_user.id):
+                is_friend = True
+            else:
+                is_friend = False
+                if friend_request_exists(sender=viewed_user, receiver=curr_user) != False:
+                    request_sent = FriendRequestStatus.FRIEND_REQUEST_TO_USER.value
+                    context['pending_friend_request_id'] = friend_request_exists(sender=viewed_user, receiver=curr_user).id
+                
+                elif friend_request_exists(sender=curr_user, receiver=viewed_user) != False:
+                    request_sent = FriendRequestStatus.FRIEND_REQUEST_FROM_USER.value
+                else:
+                    request_sent = FriendRequestStatus.NO_FRIEND_REQUEST.value
+        elif not curr_user.is_authenticated:
+            is_self = False
+        else:
+            try:
+                friend_requests = FriendRequest.objects.filter(receiver=curr_user, pending=True)
+            except:
+                pass
+
         context['is_self'] = is_self
         context['is_friend'] = is_friend
         context['BASE_URL'] = settings.BASE_URL
+        context['request_sent'] = request_sent
+        context['friend_requests'] = friend_requests
 
         return render(request, "users/profile.html", context)
 
@@ -129,10 +167,6 @@ def edit_user_view(request, *args, **kwargs):
             fss = FileSystemStorage(location=url)
             user.profile_img.delete()
             file = fss.save("profile_image.png", request_file)
-            # fileurl = fss.url(file)
-            # user.profile_img.delete()
-            # if os.path.isfile(user.profile_img.path):
-            #     os.remove(user.profile_img.path)
             user.profile_img = f"{str(user.pk)}/profile_image.png"
             user.save()
             image_updated = True
@@ -142,7 +176,6 @@ def edit_user_view(request, *args, **kwargs):
         elif image_updated:
             print("image updated")
             return redirect("users:user_profile", user_id=user.pk)
-            # return redirect(reverse("users:user_profile"), user_username=user.username)
         else:
             form = UserUpdateForm(request.POST, instance=request.user,
                 initial = {

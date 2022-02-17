@@ -25,11 +25,12 @@ from users import views as uviews
 urlpatterns = [
     path('', bviews.home_page, name='home'),
     path('admin/', admin.site.urls),
+    path('friend/', include('friends.urls', namespace="friend")),
     path('login/', uviews.login_view, name="login"),
     path('logout/', uviews.logout_view, name="logout"),
-    path('profile/', include('users.urls', namespace='profile')),
+    path('profile/', include('users.urls', namespace="profile")),
     path('register/', uviews.registration_view, name="register"),
-    path('search/', uviews.user_search_view, name="search")
+    path('search/', uviews.user_search_view, name="search"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

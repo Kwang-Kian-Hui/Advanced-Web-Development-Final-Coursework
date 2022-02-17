@@ -38,6 +38,7 @@ AUTHENTICATION_BACKENDS = (
 INSTALLED_APPS = [
     'base',
     'users',
+    'friends',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
