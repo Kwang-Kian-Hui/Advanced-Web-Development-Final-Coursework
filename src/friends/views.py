@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 import json
 from users.models import User
-from friends.models import FriendRequest
+from friends.models import FriendList, FriendRequest
 
 def friend_request_view(request, *args, **kwargs):
     context = {}
@@ -78,5 +78,28 @@ def accept_friend_request(request, *args, **kwargs):
             ajax_content["response"] = "No friend request of such id found"
     else:
         ajax_content['result'] = "error"
-        ajax_content["response"] = "Please log in to accept a friend request"
+        ajax_content["response"] = "You must be logged in to accept a friend request"
+    return HttpResponse(json.dumps(ajax_content), content_type="application/json")
+
+def remove_friend(request, *args, **kwargs):
+    user = request.user
+    ajax_content = {}
+    if request.method == "POST" and user.is_authenticated:
+        user_id = request.POST.get("receiver_user_id")
+        if user_id:
+            try:
+                user_to_remove = User.objects.get(pk=user_id)
+                self_friend_list = FriendList.objects.get(user=user)
+                self_friend_list.unfriend(user_to_remove)
+                ajax_content['result'] = "success"
+                ajax_content['response'] = "Friend removed successfully"
+            except Exception as e:
+                ajax_content['result'] = "error"
+                ajax_content['response'] = "Something went wrong"
+        else:
+            ajax_content['result'] = "error"
+            ajax_content['response'] = "Something went wrong. Unable to remove friend"
+    else:
+        ajax_content['result'] = "error"
+        ajax_content['response'] = "You must be logged in to remove a friend"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")

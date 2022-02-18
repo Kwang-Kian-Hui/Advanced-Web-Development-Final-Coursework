@@ -19,12 +19,11 @@ class FriendList(models.Model):
             self.friends.remove(user_to_remove)
 
     def unfriend(self, user_to_remove):
-        # self_user = self
-        # self_user.remove_friend(user_to_remove)
         self.remove_friend(user_to_remove)
 
         removed_user = FriendList.objects.get(user=user_to_remove)
-        removed_user.remove_user(self.user)
+        # removed_user.remove_user(self.user)
+        removed_user.remove_friend(self.user)
 
     def is_mutual_friend(self, friend):
         if friend in self.friends.all():
