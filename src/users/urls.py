@@ -3,7 +3,7 @@ from users import views as uview
 from django.conf.urls.static import static
 from django.conf import settings
 
-app_name = "users"
+app_name = "user_app"
 
 urlpatterns = [
     path('<user_id>/', uview.profile_view, name="user_profile"),

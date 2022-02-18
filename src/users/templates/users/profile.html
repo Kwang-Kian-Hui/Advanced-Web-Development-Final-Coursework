@@ -89,7 +89,7 @@
 		  		<h5>{{username}}</h5>
 
 				{% if is_self %}
-				<a class="mt-4 btn btn-primary" href="{% url 'users:edit_user' user_id=id %}">Update</a>
+				<a class="mt-4 btn btn-primary" href="{% url 'user_app:edit_user' user_id=id %}">Update</a>
 				<div class="d-flex flex-column mt-4"></div>
 				{% endif %}
 
@@ -159,7 +159,7 @@
 			<div class="card m-2 px-4 pb-4">
 				<!-- Friend requests -->
 		  		<div class="d-flex flex-column pt-4">
-					<a href="{% url 'friend:friend_request_list' user_id=id %}">
+					<a href="{% url 'friend_app:friend_request_list' user_id=id %}">
 						<div class="d-flex flex-row align-items-center justify-content-center icon-container">
 							<span class="material-icons mr-2 person-add-icon">person_add</span><span class="friend-text">Friend Requests ({{ friend_requests|length }})</span>
 						</div>
@@ -180,7 +180,6 @@
 		</div>
 		{% endif %}
 
-		
 	</div>
 </div>
 
@@ -233,7 +232,7 @@
 	}
 
 	function triggerAcceptFriendRequest(friend_request_id){
-		//acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
+		acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
 	}
 
 	function triggerDeclineFriendRequest(friend_request_id){
@@ -243,7 +242,7 @@
 </script>
 
 {% include 'friends/send_friend_request.html' %}
-{#% include 'snippets/accept_friend_request.html' %#}
+{% include 'friends/accept_friend_request.html' %}
 {#% include 'snippets/decline_friend_request.html' %#}
 {#% include 'snippets/cancel_friend_request.html' %#}
 {#% include 'snippets/remove_friend.html' %#}

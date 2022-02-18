@@ -25,7 +25,7 @@ from users import views as uviews
 urlpatterns = [
     path('', bviews.home_page, name='home'),
     path('admin/', admin.site.urls),
-    path('friend/', include('friends.urls', namespace="friend")),
+    path('friend/', include('friends.urls', namespace="friends")),
     path('login/', uviews.login_view, name="login"),
     path('logout/', uviews.logout_view, name="logout"),
     path('profile/', include('users.urls', namespace="profile")),

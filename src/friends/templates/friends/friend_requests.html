@@ -48,12 +48,12 @@
 		<div class="">
 		{% for request in friend_requests %}
 		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-			<a class="profile-link" href="{% url 'users:user_profile' user_id=request.sender.id %}">
+			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=request.sender.id %}">
 				<div class="card-image m-2">
 					<img class="img-fluid profile-image" src="{{request.sender.profile_img.url}}" alt="">
 				</div>
 			</a>
-			<a class="profile-link" href="{% url 'users:user_profile' user_id=request.sender.id %}">
+			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=request.sender.id %}">
 				<div class="card-center px-2">
 					<h4 class="card-title">{{request.sender.username}}</h4>
 				</div>
@@ -99,7 +99,7 @@
 	}
 </script>
 
-{#% include 'friend/snippets/accept_friend_request.html' %#}
+{% include 'friends/accept_friend_request.html' %}
 {#% include 'friend/snippets/decline_friend_request.html' %#}
 
 

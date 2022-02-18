@@ -96,21 +96,20 @@ def profile_view(request, *args, **kwargs):
         is_self = True
         is_friend = False
         curr_user = request.user
+        friend_requests = None
+        request_sent = FriendRequestStatus.NO_FRIEND_REQUEST.value
         # NO_FRIEND_REQUEST = 0
         # FRIEND_REQUEST_TO_USER = 1
         # FRIEND_REQUEST_FROM_USER = 2
-        friend_requests = None
-        request_sent = FriendRequestStatus.NO_FRIEND_REQUEST.value
         if (curr_user.is_authenticated and curr_user != viewed_user):
             is_self = False
-            if friends.filter(pk=viewed_user.id):
+            if friends.filter(pk=curr_user.id):
                 is_friend = True
             else:
                 is_friend = False
                 if friend_request_exists(sender=viewed_user, receiver=curr_user) != False:
                     request_sent = FriendRequestStatus.FRIEND_REQUEST_TO_USER.value
                     context['pending_friend_request_id'] = friend_request_exists(sender=viewed_user, receiver=curr_user).id
-                
                 elif friend_request_exists(sender=curr_user, receiver=viewed_user) != False:
                     request_sent = FriendRequestStatus.FRIEND_REQUEST_FROM_USER.value
                 else:

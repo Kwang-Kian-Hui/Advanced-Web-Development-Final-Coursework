@@ -54,3 +54,29 @@ def send_friend_request(request, *args, **kwargs):
         ajax_content['result'] = "error"
         ajax_content['response'] = "You must be logged in to send a friend request"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")
+
+def accept_friend_request(request, *args, **kwargs):
+    user = request.user
+    ajax_content = {}
+    if request.method == "GET" and user.is_authenticated:
+        friend_request_id = kwargs.get("friend_request_id")
+        if friend_request_id != None:
+            friend_request = FriendRequest.objects.get(pk=friend_request_id)
+            if friend_request.receiver == user:
+                if friend_request:
+                    friend_request.accept()
+                    ajax_content['result'] = "success"
+                    ajax_content['response'] = "Friend request accepted"
+                else:
+                    ajax_content['result'] = "error"
+                    ajax_content['response'] = "An error occurred"
+            else:
+                ajax_content['result'] = "error"
+                ajax_content["response"] = "You may only accept your own friend requests"
+        else:
+            ajax_content['result'] = "error"
+            ajax_content["response"] = "No friend request of such id found"
+    else:
+        ajax_content['result'] = "error"
+        ajax_content["response"] = "Please log in to accept a friend request"
+    return HttpResponse(json.dumps(ajax_content), content_type="application/json")

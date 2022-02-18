@@ -47,12 +47,12 @@ class FriendRequest(models.Model):
             sender_friends = FriendList.objects.get(user=self.sender)
             sender_friends.add_friend(self.receiver)
             self.pending = False
-            # self.save()
+            self.save()
     
     def decline(self):
         self.pending = False
-        # self.save()
+        self.save()
 
     def cancel(self):
         self.pending = False
-        # self.save()
+        self.save()
