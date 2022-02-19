@@ -107,6 +107,38 @@ def decline_friend_request(request, *args, **kwargs):
         ajax_content['response'] = "You must be logged in to decline a friend request"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")
 
+def cancel_friend_request(request, *args, **kwargs):
+    curr_user = request.user
+    ajax_content = {}
+    if request.method == "POST" and curr_user.is_authenticated:
+        user_id = request.POST.get("receiver_user_id")
+        if user_id:
+            receiver = User.objects.get(pk=user_id)
+            try:
+                friend_requests_by_curr_user = FriendRequest.objects.filter(sender=curr_user, receiver=receiver, pending=True)
+            except Exception as e:
+                ajax_content['result'] = "error"
+                ajax_content['response'] = "An error occurred. No friend requests to cancel"
+            # should only have 1 such request as each user can only send 1 request to another specific user
+            # however we should still check to ensure that all requests to that specific user is cancelled
+            if len(friend_requests_by_curr_user) > 1:
+                for request in friend_requests_by_curr_user:
+                    request.cancel()
+                ajax_content['result'] = "success"
+                ajax_content['response'] = "Friend request cancelled"
+            else:
+                friend_requests_by_curr_user.first().cancel()
+                ajax_content['result'] = "success"
+                ajax_content['response'] = "Friend request cancelled"
+        else:
+            ajax_content['result'] = "error"
+            ajax_content['response'] = "An error occurred. No user of such id found"
+    else:
+        ajax_content['result'] = "error"
+        ajax_content['response'] = "You must be logged in to cancel a friend request"
+    return HttpResponse(json.dumps(ajax_content), content_type="application/json")
+
+
 def remove_friend(request, *args, **kwargs):
     user = request.user
     ajax_content = {}

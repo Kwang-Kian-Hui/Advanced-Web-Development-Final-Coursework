@@ -1,6 +1,6 @@
 <script type="text/javascript">
-    function removeFriend(id, uiUpdateFunction){
-        url = "{% url 'friend_app:remove_friend' %}"
+    function cancelFriendRequest(id, uiUpdateFunction){        
+        url = "{% url 'friend_app:cancel_friend_request' %}"
         ajax_content = {
             "csrfmiddlewaretoken": "{{ csrf_token }}",
             "receiver_user_id": id,
@@ -27,4 +27,5 @@
             },
         });
     }
+
 </script>
