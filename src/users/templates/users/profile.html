@@ -236,14 +236,14 @@
 	}
 
 	function triggerDeclineFriendRequest(friend_request_id){
-		//declineFriendRequest(friend_request_id, onFriendRequestDeclined)
+		declineFriendRequest(friend_request_id, onFriendRequestDeclined)
 	}
 	
 </script>
 
 {% include 'friends/send_friend_request.html' %}
 {% include 'friends/accept_friend_request.html' %}
-{#% include 'snippets/decline_friend_request.html' %#}
+{% include 'friends/decline_friend_request.html' %}
 {#% include 'snippets/cancel_friend_request.html' %#}
 {% include 'friends/remove_friend.html' %}
 {#% include 'chat/create_or_return_private_chat.html' %#}

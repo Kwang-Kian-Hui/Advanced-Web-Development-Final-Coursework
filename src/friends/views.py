@@ -20,56 +20,56 @@ def friend_request_view(request, *args, **kwargs):
     return render(request, "friends/friend_requests.html", context)
 
 def send_friend_request(request, *args, **kwargs):
-    user = request.user
+    curr_user = request.user
     ajax_content = {}
-    if request.method == "POST" and user.is_authenticated:
+    if request.method == "POST" and curr_user.is_authenticated:
         user_id = request.POST.get("receiver_user_id")
         if user_id:
             receiver = User.objects.get(pk=user_id)
             try:
-                friend_requests = FriendRequest.objects.filter(sender=user, receiver=receiver)
+                friend_requests = FriendRequest.objects.filter(sender=curr_user, receiver=receiver)
                 try:
                     for f_request in friend_requests:
                         if f_request.pending:
                             raise Exception("Friend request already sent.")
-                    friend_request = FriendRequest(sender=user, receiver=receiver)
+                    friend_request = FriendRequest(sender=curr_user, receiver=receiver)
                     friend_request.save()
                     ajax_content['result'] = "success"
                     ajax_content['response'] = "Friend request sent"
                 except Exception as e:
                     ajax_content['result'] = "error"
-                    ajax_content['response'] = str(e)
+                    ajax_content['response'] = "An error occured. Failed to send request"
             except FriendRequest.DoesNotExist:
-                friend_request = FriendRequest(sender=user, receiver=receiver)
+                friend_request = FriendRequest(sender=curr_user, receiver=receiver)
                 friend_request.save()
                 ajax_content['result'] = "success"
                 ajax_content['response'] = "Friend request sent"
             if ajax_content["response"] == None:
                 ajax_content['result'] = "error"
-                ajax_content['response'] = "Something went wrong"
+                ajax_content['response'] = "An error occured. Failed to send request"
         else:
             ajax_content['result'] = "error"
-            ajax_content['response'] = "Unable to send friend request"
+            ajax_content['response'] = "Something went wrong"
     else:
         ajax_content['result'] = "error"
         ajax_content['response'] = "You must be logged in to send a friend request"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")
 
 def accept_friend_request(request, *args, **kwargs):
-    user = request.user
+    curr_user = request.user
     ajax_content = {}
-    if request.method == "GET" and user.is_authenticated:
+    if request.method == "GET" and curr_user.is_authenticated:
         friend_request_id = kwargs.get("friend_request_id")
         if friend_request_id != None:
             friend_request = FriendRequest.objects.get(pk=friend_request_id)
-            if friend_request.receiver == user:
+            if friend_request.receiver == curr_user:
                 if friend_request:
                     friend_request.accept()
                     ajax_content['result'] = "success"
                     ajax_content['response'] = "Friend request accepted"
                 else:
                     ajax_content['result'] = "error"
-                    ajax_content['response'] = "An error occurred"
+                    ajax_content['response'] = "An error occurred. Failed to decline request"
             else:
                 ajax_content['result'] = "error"
                 ajax_content["response"] = "You may only accept your own friend requests"
@@ -79,6 +79,32 @@ def accept_friend_request(request, *args, **kwargs):
     else:
         ajax_content['result'] = "error"
         ajax_content["response"] = "You must be logged in to accept a friend request"
+    return HttpResponse(json.dumps(ajax_content), content_type="application/json")
+
+def decline_friend_request(request, *args, **kwargs):
+    curr_user = request.user
+    ajax_content = {}
+    if request.method == "GET" and curr_user.is_authenticated:
+        friend_request_id = kwargs.get("friend_request_id")
+        if friend_request_id:
+            friend_request = FriendRequest.objects.get(pk=friend_request_id)
+            if friend_request.receiver == curr_user:
+                if friend_request:
+                    friend_request.decline()
+                    ajax_content['result'] = "success"
+                    ajax_content['response'] = "Friend request declined"
+                else:
+                    ajax_content['result'] = "error"
+                    ajax_content['response'] = "An error occurred. Please try again later"
+            else:
+                ajax_content['result'] = "error"
+                ajax_content['response'] = "You may only decline requests that you received"
+        else:
+            ajax_content['result'] = "error"
+            ajax_content['response'] = "No friend request of such id found"
+    else:
+        ajax_content['result'] = "error"
+        ajax_content['response'] = "You must be logged in to decline a friend request"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")
 
 def remove_friend(request, *args, **kwargs):
@@ -95,7 +121,7 @@ def remove_friend(request, *args, **kwargs):
                 ajax_content['response'] = "Friend removed successfully"
             except Exception as e:
                 ajax_content['result'] = "error"
-                ajax_content['response'] = "Something went wrong"
+                ajax_content['response'] = "An error occurred. Failed to remove friend"
         else:
             ajax_content['result'] = "error"
             ajax_content['response'] = "Something went wrong. Unable to remove friend"
