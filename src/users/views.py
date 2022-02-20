@@ -132,14 +132,21 @@ def profile_view(request, *args, **kwargs):
 
 def user_search_view(request, *args, **kwargs):
     context = {}
+    curr_user = request.user
     if request.method == "GET":
         search_query = request.GET.get("q")
         if len(search_query) > 0:
             search_results = User.objects.filter(username__icontains=search_query)
             profiles = []
-            for result in search_results:
-                profiles.append((result, False))
-            context['profiles'] = profiles
+            if curr_user.is_authenticated:
+                curr_user_friend_list = FriendList.objects.get(user=curr_user)
+                for user in search_results:
+                    profiles.append((user, curr_user_friend_list.is_mutual_friend(user)))
+                context['profiles'] = profiles
+            else:
+                for user in search_results:
+                    profiles.append((user, False))
+                context['profiles'] = profiles
     return render(request, "users/user_search.html", context)
 
 def edit_user_view(request, *args, **kwargs):

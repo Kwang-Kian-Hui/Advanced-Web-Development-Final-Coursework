@@ -161,3 +161,33 @@ def remove_friend(request, *args, **kwargs):
         ajax_content['result'] = "error"
         ajax_content['response'] = "You must be logged in to remove a friend"
     return HttpResponse(json.dumps(ajax_content), content_type="application/json")
+
+
+def friend_list_view(request, *args, **kwargs):
+    context = {}
+    curr_user = request.user
+    if curr_user.is_authenticated:
+        viewed_user_id = kwargs.get("user_id")
+        if viewed_user_id:
+            try:
+                viewed_user = User.objects.get(pk=viewed_user_id)
+                context['curr_user_obj'] = viewed_user
+            except User.DoesNotExist:
+                return HttpResponse("User does not exist")
+            try:
+                viewed_friend_list = FriendList.objects.get(user=viewed_user)
+            except FriendList.DoesNotExist:
+                return HttpResponse("No friend list found")
+
+            if curr_user != viewed_user:
+                if not curr_user in viewed_friend_list.friends.all():
+                    return HttpResponse("You may only view your own or your friends' friend list")
+            
+            curr_user_friend_list = FriendList.objects.get(user=curr_user)
+            matched_friends = []
+            for friend in viewed_friend_list.friends.all():
+                matched_friends.append((friend, curr_user_friend_list.is_mutual_friend(friend)))
+            context['matched_friends'] = matched_friends
+    else:
+        return HttpResponse("You must be logged in to view a user's friend list")
+    return render(request, "friends/friend_list.html", context)
