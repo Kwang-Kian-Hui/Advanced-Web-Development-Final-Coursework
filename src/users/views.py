@@ -13,10 +13,10 @@ from users.forms import UserRegistrationForm, UserAuthenticationForm, UserUpdate
 import os
 
 def registration_view(request, *args, **kwargs):
-    user = request.user
+    curr_user = request.user
 
-    if user.is_authenticated:
-        return HttpResponse(f"You are already logged in as {user.email}.")
+    if curr_user.is_authenticated:
+        return HttpResponse(f"You are already logged in as {curr_user.email}.")
     context = {}
 
     if request.POST:
@@ -43,8 +43,8 @@ def logout_view(request):
 
 def login_view(request, *args, **kwargs):
     context = {}
-    user = request.user
-    if user.is_authenticated:
+    curr_user = request.user
+    if curr_user.is_authenticated:
         return redirect("home")
     if request.POST:
         form = UserAuthenticationForm(request.POST)

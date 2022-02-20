@@ -20,10 +20,12 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from base import views as bviews
 from users import views as uviews
+from userposts import views as upviews
 
 
 urlpatterns = [
-    path('', bviews.home_page, name='home'),
+    # path('', bviews.home_page, name='home'),
+    path('', upviews.home_page, name='home'),
     path('admin/', admin.site.urls),
     path('friend/', include('friends.urls', namespace="friends")),
     path('login/', uviews.login_view, name="login"),
