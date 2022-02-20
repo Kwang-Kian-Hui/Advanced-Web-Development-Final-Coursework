@@ -8,6 +8,10 @@ from friends.models import FriendList
 def home_page(request, *args, **kwargs):
     context = {}
     curr_user = request.user
+    if request.method == "POST" and curr_user.is_authenticated:
+        pass
+
+    # request.method GET
     friend_list = []
     try:
         curr_user_friend_list = FriendList.objects.get(user=curr_user)
@@ -17,17 +21,63 @@ def home_page(request, *args, **kwargs):
         pass
 
     if friend_list != []:
-        # display own post + friends'
-        pass
+        # include curr user to list before filtering
+        friend_list.append(curr_user)
+        # display own post + friends' posts
+        # filter UserPost based on poster = current user
+        posts = UserPost.objects.filter(poster__in=friend_list)
+        context['posts'] = posts
+        
+        # Group.objects.filter(player__name__in=['Player1','Player2'])
+        # UserPost.objects.filter(poster__in=[])
     else:
         # display own posts only
-        # UserPost.objects.get()
-        pass
+        posts = UserPost.objects.filter(poster=curr_user)
+        context['posts'] = posts
+    return render(request, "userposts/homepage.html", context)
     # filter 
 
-    # filter UserPost based on poster = current user
-    # Group.objects.filter(player__name__in=['Player1','Player2'])
-    # UserPost.objects.filter(poster__in=[])
+
+    # form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
+    #     image_updated = False
+    #     # retrieve file if it exissts
+    #     if 'profile_image_file_selector' in request.FILES:
+
+    #         request_file = request.FILES['profile_image_file_selector'] 
+    #         # default path of settings.MEDIA_ROOT
+    #         url = os.path.join(settings.MEDIA_ROOT + "/", str(user.pk))
+    #         fss = FileSystemStorage(location=url)
+    #         user.profile_img.delete()
+    #         file = fss.save("profile_image.png", request_file)
+    #         user.profile_img = f"{str(user.pk)}/profile_image.png"
+    #         user.save()
+    #         image_updated = True
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect("users:user_profile", user_id=user.pk)
+    #     elif image_updated:
+    #         print("image updated")
+    #         return redirect("users:user_profile", user_id=user.pk)
+    #     else:
+    #         form = UserUpdateForm(request.POST, instance=request.user,
+    #             initial = {
+    #                 "id": user.pk,
+    #                 "email": user.email,
+    #                 "username": user.username,
+    #                 "profile_img": user.profile_img,
+    #             }
+    #         )
+    #         context['form'] = form
+    # else:
+    #     form = UserUpdateForm(
+    #         initial = {
+    #             "id": user.pk,
+    #             "email": user.email,
+    #             "username": user.username,
+    #             "profile_img": user.profile_img,
+    #         }
+    #     )
+    #     context['form'] = form
 
 
     # try:
@@ -82,6 +132,3 @@ def home_page(request, *args, **kwargs):
     #     context['BASE_URL'] = settings.BASE_URL
     #     context['request_sent'] = request_sent
     #     context['friend_requests'] = friend_requests
-
-        
-    return render(request, "userposts/homepage.html", context)
