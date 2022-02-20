@@ -25,8 +25,11 @@ def home_page(request, *args, **kwargs):
         friend_list.append(curr_user)
         # display own post + friends' posts
         # filter UserPost based on poster = current user
+        # try:
         posts = UserPost.objects.filter(poster__in=friend_list)
         context['posts'] = posts
+        # except UserPost.DoesNotExist:
+        #     context['posts']
         
         # Group.objects.filter(player__name__in=['Player1','Player2'])
         # UserPost.objects.filter(poster__in=[])
