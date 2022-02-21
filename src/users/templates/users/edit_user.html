@@ -50,10 +50,10 @@
 		<div class="card profile-card">
 		  <div class="card-body">
 		  	<div class="d-flex flex-column justify-content-center p-4">
-		  		<div class="mb-2" id="confirm_image_upload">
-		  			<span id="cancel_changes" class="material-icons">cancel</span>
-		  			<span id="confirm_changes" class="material-icons">check</span>
-		  		</div>
+		  		<!-- <div class="mb-2" id="confirm_image_upload"> -->
+		  			<!-- <span id="cancel_changes" class="material-icons">cancel</span>
+		  			<span id="confirm_changes" class="material-icons">check</span> -->
+		  		<!-- </div> -->
 		  		<div class="image-container" id="id_image_container">
 	  				<img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="profile_image" src="{{form.initial.profile_img.url}}" alt="Default Profile Image">
 					<!-- <div class="middle" id="id_middle_container"></div> -->
@@ -84,7 +84,6 @@
 					<div style="color: red">
 					<p>{{form.non_field_errors}}</p>
 					</div>
-
 					{% endif %}
 
 					<div class="d-flex flex-column mt-4">
@@ -113,33 +112,33 @@
             reader.readAsDataURL(inputImage.files[0]);
 		}
 	}
-	var uploadConfirm = document.getElementById("confirm_image_upload");
-	uploadConfirm.classList.remove("d-flex");
-	uploadConfirm.classList.remove("flex-row");
-	uploadConfirm.classList.remove("justify-content-between");
-	uploadConfirm.classList.add("d-none");
+	// var uploadConfirm = document.getElementById("confirm_image_upload");
+	// uploadConfirm.classList.remove("d-flex");
+	// uploadConfirm.classList.remove("flex-row");
+	// uploadConfirm.classList.remove("justify-content-between");
+	// uploadConfirm.classList.add("d-none");
 	
 	// upload button
 	document.getElementById("upload-image-btn").addEventListener("click", function(){
 		document.getElementById("id_profile_image_file_selector").click();
 		
-		var uploadConfirm = document.getElementById("confirm_image_upload");
-		uploadConfirm.classList.add("d-flex");
-		uploadConfirm.classList.add("flex-row");
-		uploadConfirm.classList.add("justify-content-between");
-		uploadConfirm.classList.remove("d-none");	
+		// var uploadConfirm = document.getElementById("confirm_image_upload");
+		// uploadConfirm.classList.add("d-flex");
+		// uploadConfirm.classList.add("flex-row");
+		// uploadConfirm.classList.add("justify-content-between");
+		// uploadConfirm.classList.remove("d-none");	
 	});
 	
 	// confirm changes button
-	document.getElementById("confirm_changes").addEventListener("click", function(event){
-		uploadConfirm.classList.remove("d-flex");
-		uploadConfirm.classList.remove("flex-row");
-		uploadConfirm.classList.remove("justify-content-between");
-		uploadConfirm.classList.add("d-none");
-	})
-	document.getElementById("cancel_changes").addEventListener("click", function(event){
-		window.location.reload();
-	})
+	// document.getElementById("confirm_changes").addEventListener("click", function(event){
+		// uploadConfirm.classList.remove("d-flex");
+		// uploadConfirm.classList.remove("flex-row");
+		// uploadConfirm.classList.remove("justify-content-between");
+		// uploadConfirm.classList.add("d-none");
+	// })
+	// document.getElementById("cancel_changes").addEventListener("click", function(event){
+	// 	window.location.reload();
+	// })
 
 </script>
 

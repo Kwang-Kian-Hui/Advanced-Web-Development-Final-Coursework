@@ -1,6 +1,10 @@
+import os
+from django.conf import settings
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.core.files.storage import FileSystemStorage
 import json
+from userposts.forms import UserPostForm
 from userposts.models import UserPost
 from users.models import User
 from friends.models import FriendList
@@ -9,35 +13,69 @@ def home_page(request, *args, **kwargs):
     context = {}
     curr_user = request.user
     if request.method == "POST" and curr_user.is_authenticated:
-        pass
-
-    # request.method GET
-    friend_list = []
-    try:
-        curr_user_friend_list = FriendList.objects.get(user=curr_user)
-        for friend in curr_user_friend_list.friends.all():
-            friend_list.append(friend)
-    except FriendList.DoesNotExist:
-        pass
-
-    if friend_list != []:
-        # include curr user to list before filtering
-        friend_list.append(curr_user)
-        # display own post + friends' posts
-        # filter UserPost based on poster = current user
-        # try:
-        posts = UserPost.objects.filter(poster__in=friend_list)
-        context['posts'] = posts
-        # except UserPost.DoesNotExist:
-        #     context['posts']
+        form = UserPostForm(request.POST, request.FILES)
         
-        # Group.objects.filter(player__name__in=['Player1','Player2'])
-        # UserPost.objects.filter(poster__in=[])
-    else:
-        # display own posts only
-        posts = UserPost.objects.filter(poster=curr_user)
-        context['posts'] = posts
+        if form.is_valid():
+            content_val=form.cleaned_data.get("content")
+            # if 'profile_image_file_selector' in request.FILES:
+
+            try: 
+                request_file = request.FILES['post_image_file_selector'] 
+                url = os.path.join(settings.MEDIA_ROOT + "/", str(curr_user.pk))
+                # url = os.path.join(settings.MEDIA_URL + "/", str(curr_user.pk) + "/posts")
+                fss = FileSystemStorage(location=url)
+                file = fss.save(f"{curr_user.pk}.png", request_file)
+                new_post = UserPost.objects.create(content=content_val, img=file, poster=request.user)
+                # new_post.profile_img = f"{str(curr_user.pk)}/profile_image.png"
+                # new_post.save()
+            except:
+            # else:
+                new_post = UserPost.objects.create(content=content_val, poster=request.user)
+        # save image
+        # create post
+        # redirect window/refresh
+    if curr_user.is_authenticated:
+        # request.method GET
+        friend_list = []
+        try:
+            curr_user_friend_list = FriendList.objects.get(user=curr_user)
+            for friend in curr_user_friend_list.friends.all():
+                friend_list.append(friend)
+        except FriendList.DoesNotExist:
+            pass
+
+        if friend_list != []:
+            # include curr user to list before filtering
+            friend_list.append(curr_user)
+            # display own post + friends' posts
+            # filter UserPost based on poster = current user
+            # try:
+            posts = UserPost.objects.filter(poster__in=friend_list)
+            context['posts'] = posts
+            # except UserPost.DoesNotExist:
+            #     context['posts']
+            
+            # Group.objects.filter(player__name__in=['Player1','Player2'])
+            # UserPost.objects.filter(poster__in=[])
+        else:
+            # display own posts only
+            posts = UserPost.objects.filter(poster=curr_user)
+            context['posts'] = posts
+        form = UserPostForm()
+        context['form'] = form
+
+    # for post in posts:
+    #     try:
+    #         print('name: '+ str(post.img)) # 2.png
+    #         print(post.img.url) # /media/2.png
+    #         print(post.img.path) 
+    #     except:
+    #         pass
+    # print('profile:' + str(request.user.profile_img))
+    # print(request.user.profile_img.url)
+        
     return render(request, "userposts/homepage.html", context)
+    # return redirect("home")
     # filter 
 
 
