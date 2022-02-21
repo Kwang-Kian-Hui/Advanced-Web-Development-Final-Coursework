@@ -50,7 +50,7 @@ def home_page(request, *args, **kwargs):
             # display own post + friends' posts
             # filter UserPost based on poster = current user
             # try:
-            posts = UserPost.objects.filter(poster__in=friend_list)
+            posts = reversed(UserPost.objects.filter(poster__in=friend_list).order_by('timestamp'))
             context['posts'] = posts
             # except UserPost.DoesNotExist:
             #     context['posts']
@@ -59,7 +59,8 @@ def home_page(request, *args, **kwargs):
             # UserPost.objects.filter(poster__in=[])
         else:
             # display own posts only
-            posts = UserPost.objects.filter(poster=curr_user)
+            # use orderby and reversed to display newer posts at the top while the older posts at the bottom
+            posts = reversed(UserPost.objects.filter(poster=curr_user).order_by('timestamp'))
             context['posts'] = posts
         form = UserPostForm()
         context['form'] = form

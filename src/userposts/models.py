@@ -6,7 +6,7 @@ from django.utils import timezone
 
 def get_post_image_path(self):
     # return f'{self.user_id}/posts/{self.pk}'
-    return os.path.join(settings.MEDIA_ROOT + "/", str(self.pk))
+    return os.path.join(settings.MEDIA_ROOT + "/", str(self.pk) + "/")
 
 class UserPost(models.Model):
     content = models.TextField()

@@ -90,20 +90,20 @@
 
 		{% if posts %}
 		{% for post in posts %}
-            <div class="card flex-row justify-content-start">
+            <div class="card flex-row justify-content-start mt-3">
                 <a class="profile-link" href="{% url 'user_app:user_profile' user_id=post.poster.pk %}">
                     <div class="card-image m-2">
                         <img class="img-fluid profile-image" src="{{post.poster.profile_img.url}}" alt="">
                     </div>
                 </a>
                 {% if post.poster != request.user %}
-                <a class="profile-link" href="{% url 'user_app:user_profile' user_id=post.poster.pk %}">
+                <a class="profile-link my-auto" href="{% url 'user_app:user_profile' user_id=post.poster.pk %}">
                     <div class="card-center px-2">
                         <h4 class="card-title">{{post.poster.username}}</h4>
                     </div>
                 </a>
                 {% else %}
-                <a class="profile-link" href="{% url 'user_app:user_profile' user_id=request.user.id %}">
+                <a class="profile-link my-auto" href="{% url 'user_app:user_profile' user_id=request.user.id %}">
                     <div class="card-center px-2">
                         <h4 class="card-title">You</h4>
                     </div>
@@ -111,16 +111,14 @@
                 {% endif %}
             </div>
 			{% if post.img != "" %}
-			{{ post.img }}
             <div class="card flex-row justify-content-center">
                 <div class="card-image m-2">
-					<!-- <img class="d-none img-fluid mx-auto post-image align-items-center" id="post_image" src="" alt="Post Image"> -->
-                    <img class="img-fluid img-thumbnail post-image" id="id_post_image" src="{{post.img}}" alt="post image">
+                    <img class="img-fluid img-thumbnail post-image" id="id_post_image" src="media/{{post.poster.id}}/{{post.img}}" alt="post image">
                 </div>
             </div>
 			{% endif %}
             <div class="card flex-row justify-content-center">
-                <p class="text-break fs-6 fst-normal lh-1">{{post.content}}</p>
+                <p class="text-break fs-6 fst-normal lh-1 mx-4 my-2">{{post.content}}</p>
             </div>
 		{% endfor %}
 		{% else %} <!-- If no posts -->
