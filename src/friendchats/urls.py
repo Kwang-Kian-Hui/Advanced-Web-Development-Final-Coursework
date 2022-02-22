@@ -6,7 +6,7 @@ from friendchats import views as fcviews
 app_name = "friendchat_app"
 
 urlpatterns = [
-    path('<chat_room_id/', fcviews.chatroom_view, name="chat_room"),
+    path('<str:room_name>/', fcviews.chatroom_view, name="chat_room"),
     path('chat_list/<user_id>', fcviews.chatroom_list_view, name="chat_list"),
 ]
 

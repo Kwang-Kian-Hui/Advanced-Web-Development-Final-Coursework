@@ -26,12 +26,12 @@ def registration_view(request, *args, **kwargs):
             email = form.cleaned_data.get('email').lower()
             password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=password)
-            login(request, user)
             # destination = kwargs.get("next")
-            destination = get_redirect_if_exists(request)
-            if destination:
-                return redirect(destination)
+            # destination = get_redirect_if_exists(request)
+            # if destination:
+            #     return redirect(destination)
             # redirect(path_name) as defined in urls.py
+            login(request, user)
             return redirect("home")
         else:
             context['registration_form'] = form
@@ -70,7 +70,6 @@ def get_redirect_if_exists(request):
         if request.GET.get("next"):
             redirect = str(request.GET.get("next"))
     return redirect
-
 
 def profile_view(request, *args, **kwargs):
     context = {}

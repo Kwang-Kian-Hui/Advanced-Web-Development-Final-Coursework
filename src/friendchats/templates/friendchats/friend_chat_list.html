@@ -3,69 +3,52 @@
 {% block content %}
 <div>
     {% if chatrooms %}
-		<!-- <div class=""> -->
-		{% for chatroom in chatrooms %}
-		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
-			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=profile.0.id %}">
-				<div class="card-image m-2">
-					<img class="img-fluid profile-image" src="{{profile.0.profile_img.url}}" alt="">
-				</div>
-			</a>
-			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=profile.0.id %}">
-				<div class="card-center px-2">
-					<h4 class="card-title">{{profile.0.username}}</h4>
-					{% if profile.1 %}
-					<p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.profile}}')">Send a Message</a></p>
-					{% endif %}
-					
-				</div>
-			</a>
-			<div class="d-flex flex-row card-right flex-grow-1 justify-content-end mx-2">
-				{% if profile.1 %}
-					<div class="d-flex flex-row friends-text-container p-3">
-						<p class="friends-text m-auto">
-							Friends 
-						</p>
-						<span class="material-icons checkmark-icon m-auto pl-2">
-						check_circle_outline
-						</span>
-					</div>
-				{% else %}
-					{% if profile.0 != request.user %}
-						<div class="d-flex flex-row friends-text-container p-3">
-							<p class="friends-text m-auto">
-								Not Friends 
-							</p>
-							<span class="material-icons cancel-icon m-auto pl-2">cancel</span>
-						</div>
-					{% endif %}
-				{% endif %}
-				{% if profile.0 == request.user %}
-					<div class="d-flex flex-row friends-text-container p-3">
-						<p class="friends-text m-auto">
-							This is you 
-						</p>
-						<span class="material-icons m-auto pl-2">
-						person_pin
-						</span>
-					</div>
-				{% endif %}
+	<!-- <div class=""> -->
+	{% for chatroom in chatrooms %}
+	<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
+		{% if chatroom.participant1 == request.user %}
+		<a class="profile-link" href="{% url 'user_app:user_profile' user_id=chatroom.participant2.id %}">
+			<div class="card-image m-2">
+				<img class="img-fluid profile-image" src="{{chatroom.participant2.profile_img.url}}" alt="">
 			</div>
-		</div>
-		<!-- {% if forloop.counter|divisibleby:2 %} -->
-		</div>
-        <!-- <div class="d-flex flex-row flex-wrap"> -->
-		<!-- {% endif %} -->
-		
-		{% endfor %}
-		
-		{% else %} <!-- If no friends -->
-		<div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
-			<p>No results</p>
-		</div>
+		</a>
+		<a class="profile-link" href="{% url 'user_app:user_profile' user_id=chatroom.participant2.id %}">
+			<div class="card-center px-2">
+				<h4 class="card-title">{{chatroom.participant2.username}}</h4>
+			</div>
+		</a>
+		{% else %}
+		<a class="profile-link" href="{% url 'user_app:user_profile' user_id=chatroom.participant1.id %}">
+			<div class="card-image m-2">
+				<img class="img-fluid profile-image" src="{{chatroom.participant1.profile_img.url}}" alt="">
+			</div>
+		</a>
+		<a class="profile-link" href="{% url 'user_app:user_profile' user_id=chatroom.participant1.id %}">
+			<div class="card-center px-2">
+				<h4 class="card-title">{{chatroom.participant1.username}}</h4>
+			</div>
+		</a>
 		{% endif %}
-		<!-- </div> -->
+		<div class="d-flex flex-row card-right flex-grow-1 justify-content-end mx-2">
+			<a class="chat-link" href="{% url 'friendchat_app:chat_room' room_name=chatroom.chatroom_name %}">
+				<div class="d-flex flex-row friends-text-container p-3">
+					<p class="friends-text m-auto">
+						Open Chat
+					</p>
+					<span class="material-icons m-auto pl-2">
+					person_pin
+					</span>
+				</div>				
+			</a>
+		</div>
 	</div>
+	{% endfor %}
+	
+	{% else %} <!-- If no chats -->
+	<div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
+		<p>No chats</p>
+	</div>
+	{% endif %}
 </div>
 
 <!-- <script>
