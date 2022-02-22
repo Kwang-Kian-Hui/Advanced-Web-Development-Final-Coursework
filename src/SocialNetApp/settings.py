@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'users',
     'userposts',
     'friends',
@@ -77,7 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'SocialNetApp.wsgi.application'
-
+ASGI_APPLICATION = "SocialNetApp.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

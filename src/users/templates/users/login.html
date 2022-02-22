@@ -63,7 +63,7 @@
 
 				{% endif %}
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+				<button class="btn btn-lg btn-primary btn-block" id="login-btn" type="submit">Log in</button>
 				</form>
 
 				<div class="d-flex flex-column my-4">
@@ -74,5 +74,11 @@
 		
 	</div>
 </div>
-
+<script type="text/javascript">
+	document.querySelector('#inputPassword').onkeyup = function(e) {
+		if (e.keyCode === 13) {  // enter, return
+			document.querySelector('#login-btn').click();
+		}
+	};
+</script>
 {% endblock content %}

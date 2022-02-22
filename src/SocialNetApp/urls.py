@@ -21,12 +21,11 @@ from django.conf.urls.static import static
 from users import views as uviews
 from userposts import views as upviews
 
-
 urlpatterns = [
-    # path('', bviews.home_page, name='home'),
     path('', upviews.home_page, name='home'),
     path('admin/', admin.site.urls),
     path('friend/', include('friends.urls', namespace="friends")),
+    path('chat/', include('friendchats.urls', namespace="friendchats")),
     path('login/', uviews.login_view, name="login"),
     path('logout/', uviews.logout_view, name="logout"),
     path('profile/', include('users.urls', namespace="profile")),

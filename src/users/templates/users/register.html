@@ -72,7 +72,7 @@
 
 				{% endif %}
 
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+				<button class="btn btn-lg btn-primary btn-block" id="register-btn" type="submit">Register</button>
 
 				</form>
 		  </div>
@@ -80,5 +80,12 @@
 		
 	</div>
 </div>
+<script type="text/javascript">
+	document.querySelector('#inputPassword2').onkeyup = function(e) {
+		if (e.keyCode === 13) {  // enter, return
+			document.querySelector('#register-btn').click();
+		}
+	};
+</script>
 
 {% endblock content %}
