@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h3>You: {{curr_user.username}}</h3>
+    <h3>Friend: {{friend.username}}</h3>
+    <ul>
+        {% for message in messages %}
+        <li>[{{message.sender.username}}]: {{message.content}}</li>
+        {% endfor %}
+    </ul>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="message" id="message" required>
+        <input type="submit" value="Send" class="btn">
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block custom_javascript %}
+<script>
+    const url = 'ws://localhost:8080/ws/chat'
+    const ws = new WebSocket(url)
+    ws.onopen = function() {
+        console.log("Connection established")
+    }
+    ws.onmessage = function(event) {
+        console.log(event)
+        console.log("Message received")
+    }
+    ws.onclose = function(event) {
+        console.log("Connection closed")
+    }
+    ws.onerror = function(event) {
+        console.log("Something went wrong")
+    }
+</script>
+{% endblock custom_javascript %}
