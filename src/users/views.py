@@ -27,14 +27,13 @@ def registration_view(request, *args, **kwargs):
             password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=password)
             login(request, user)
-            # destination = kwargs.get("next")
-            destination = get_redirect_if_exists(request)
-            if destination:
-                return redirect(destination)
-            # redirect(path_name) as defined in urls.py
+            FriendList.objects.create(user=user)
             return redirect("home")
         else:
             context['registration_form'] = form
+    else:
+        form = UserRegistrationForm()
+        context['registration_form'] = form
     return render(request, 'users/register.html', context)
 
 def logout_view(request):
@@ -51,26 +50,10 @@ def login_view(request, *args, **kwargs):
         
         if form.is_valid():
             form.save(request)
-        #     email = form.cleaned_data.get('email').lower()
-        #     password = form.cleaned_data.get('password')
-        #     user = authenticate(email=email, password=password)
-        #     if user:
-        #         login(request, user)
-            destination = get_redirect_if_exists(request)
-            if destination:
-                return redirect(destination)
             return redirect("home")
         else:
             context['login_form'] = form
     return render(request, "users/login.html", context)
-
-def get_redirect_if_exists(request):
-    redirect = None
-    if request.GET:
-        if request.GET.get("next"):
-            redirect = str(request.GET.get("next"))
-    return redirect
-
 
 def profile_view(request, *args, **kwargs):
     context = {}

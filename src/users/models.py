@@ -2,6 +2,7 @@ from re import L
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from friends.models import FriendList
 
 class UserManager(BaseUserManager):
 
@@ -17,6 +18,7 @@ class UserManager(BaseUserManager):
         )
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, email, username, password):

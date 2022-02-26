@@ -40,10 +40,9 @@
 </style>
 
 <div class="container">
-	<div class="card p-2">
+	<div class="card d-flex flex-column flex-grow-1">
 
 		{% if profiles %}
-		<!-- <div class=""> -->
 		{% for profile in profiles %}
 		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
 			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=profile.0.id %}">
@@ -92,11 +91,6 @@
 				{% endif %}
 			</div>
 		</div>
-		<!-- {% if forloop.counter|divisibleby:2 %} -->
-		</div>
-        <!-- <div class="d-flex flex-row flex-wrap"> -->
-		<!-- {% endif %} -->
-		
 		{% endfor %}
 		
 		{% else %} <!-- If no friends -->
@@ -104,7 +98,6 @@
 			<p>No results</p>
 		</div>
 		{% endif %}
-		<!-- </div> -->
 	</div>
 </div>
 

@@ -31,30 +31,9 @@
 	.btn:hover{
 		background-color: var(--btn-color-hover);
 	}
-	/* .friends-text{
-		color: #000;
-		font-weight: 500;
-	}
-	.friends-text-container{
-		border: 1px solid #cccccc;
-		border-radius: 12px;
-	}
-	.friends-btn:hover {
-		background-color: #bfbfbf;
-		border-color: #bfbfbf;
-	} */
-	/* .dropdown-toggle::after { 
-		content: none; 
-	} */
 	.profile-link{
 		color: #000;
 	}
-	/* .checkmark-icon{
-		color: green;
-	}
-	.cancel-icon{
-		color: red;
-	} */
 </style>
 
 {% if request.user.is_authenticated %}
@@ -129,7 +108,7 @@
 	</div>
 </div>
 {% else %}
-<h2 class="text">Welcome to SocialNetApp</h2>
+<h2 class="d-flex flex-grow-1 justify-content-center p-4">Welcome to SocialNetApp</h2>
 {% endif %}
 
 <script type="text/javascript">
