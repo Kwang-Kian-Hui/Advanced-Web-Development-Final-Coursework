@@ -14,17 +14,16 @@ def chat_view(request, *args, **kwargs):
     channel = Channel.objects.get_or_create_personal_channel(curr_user, friend)
     if channel == None:
         raise HttpResponse("An error occurred, could not send message")
-    context['curr_user'] = curr_user
     context['channel'] = channel
     context['friend'] = friend
-    context['message'] = channel.message_set.all()
+    context['messages'] = Message.objects.filter(channel=channel)
     if request.method == "POST":
+        print('post')
         content = request.POST.get("message")
         Message.objects.create(sender=curr_user, channel=channel, content=content)
         channel = Channel.objects.get_or_create_personal_channel(curr_user, friend)
         context['channel'] = channel
-        context['message'] = channel.message_set.all()
-        return render(request, "friendchat/chat.html", context=context)
+        context['messages'] = Message.objects.filter(channel=channel)
     return render(request, "friendchat/chat.html", context=context)
 
 # class ChatView(View):

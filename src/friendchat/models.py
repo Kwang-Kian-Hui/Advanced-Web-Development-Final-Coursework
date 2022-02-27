@@ -10,8 +10,11 @@ class ChatManager(models.Manager):
         if channels.exists():
             return channels.first()
         else:
-            
-            channel_name = f"{user1.pk}{user1.email.split('@')[0]}{user2.pk}{user2.email.split('@')[0]}"
+            users = sorted( [ user1.email.split('@')[0], user2.email.split('@')[0] ] )
+            if users[0] == user1.email.split('@')[0]:
+                channel_name = f"{user1.pk}{user1.email.split('@')[0]}{user2.pk}{user2.email.split('@')[0]}"
+            else:
+                channel_name = f"{user2.pk}{user2.email.split('@')[0]}{user1.pk}{user1.email.split('@')[0]}"
             channel = self.create(name=channel_name)
             channel.users.add(user1)
             channel.users.add(user2)

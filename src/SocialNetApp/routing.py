@@ -4,6 +4,6 @@ from friendchat.consumers import ChatConsumer
 
 application = ProtocolTypeRouter({
     'websocket': URLRouter([
-        path('ws/chat/', ChatConsumer)
+        path('ws/chat/', ChatConsumer())
     ])
 })

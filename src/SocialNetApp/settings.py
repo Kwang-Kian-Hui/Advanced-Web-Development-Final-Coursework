@@ -77,8 +77,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'SocialNetApp.wsgi.application'
-ASGI_APPLICATION = 'friendchat.routing.application'
+# WSGI_APPLICATION = 'SocialNetApp.wsgi.application'
+ASGI_APPLICATION = 'SocialNetApp.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

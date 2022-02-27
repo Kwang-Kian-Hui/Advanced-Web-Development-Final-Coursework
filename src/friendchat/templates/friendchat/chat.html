@@ -2,39 +2,77 @@
 {% load static %}
 {% block content %}
 
-<div>
-    <h3>You: {{curr_user.username}}</h3>
-    <h3>Friend: {{friend.username}}</h3>
-    <ul>
-        {% for message in messages %}
-        <li>[{{message.sender.username}}]: {{message.content}}</li>
-        {% endfor %}
-    </ul>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" name="message" id="message" required>
-        <input type="submit" value="Send" class="btn">
-    </form>
+<style type="text/css">
+	.profile-image{
+		max-height: 50px;
+		max-width: 50px;
+        border-radius: 12px;
+	}
+	.card{
+		border-radius: 12px;
+	}
+    .message-card{
+        background-color: var(--bg-color);
+        border-radius: 12px;
+    }
+	.profile-card{
+        border: none;
+    }
+    .message-log{
+        color: var(--text-black-700);
+    }
+    .chat-card{
+        border-radius: 12px;
+        background-color: white;
+    }
+    .your-messages{
+        width: fit-content;
+        position: relative;
+        margin-left: auto;
+    }
+    .friend-messages{
+        width: fit-content;
+        position: relative;
+        margin-right: auto;
+    }
+    .submit-btn{
+        background-color: var(--bg-color);
+    }
+</style>
+
+<div class="container">
+	<div class="card p-4">
+        <div class="card flex-row justify-content-center p-3 profile-card">
+            <a class="profile-link" href="{% url 'user_app:user_profile' user_id=friend.pk %}">
+				<div class="card-image m-2">
+					<img class="img-fluid profile-image" src="{{friend.profile_image.url}}" alt="">
+				</div>
+			</a>
+            <h3>{{friend.username}}</h3>
+        </div>
+        <div class="message-card py-3 px-2">
+            {% for message in messages %}
+                {% if message.sender == request.user %}
+                <div class="chat-card my-2 your-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% else %}
+                <div class="chat-card my-2 friend-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form id="message-form" action="" method="post">
+            {% csrf_token %}
+            <input class="card form-control my-2" type="text" name="message" id="message" required>
+            <input class="card submit-btn ml-auto px-4 py-3" type="submit" value="Send" class="btn">
+        </form>
+    </div>
 </div>
 
 {% endblock content %}
-
-{% block custom_javascript %}
-<script>
-    const url = 'ws://localhost:8080/ws/chat'
-    const ws = new WebSocket(url)
-    ws.onopen = function() {
-        console.log("Connection established")
-    }
-    ws.onmessage = function(event) {
-        console.log(event)
-        console.log("Message received")
-    }
-    ws.onclose = function(event) {
-        console.log("Connection closed")
-    }
-    ws.onerror = function(event) {
-        console.log("Something went wrong")
-    }
-</script>
-{% endblock custom_javascript %}
