@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views import View
 from django.http import HttpResponse
+from django.db.models import Q
 from friendchat.models import Channel, Message
+from friends.models import FriendList
 from users.models import User
 
 def chat_view(request, *args, **kwargs):
@@ -18,41 +19,26 @@ def chat_view(request, *args, **kwargs):
     context['friend'] = friend
     context['messages'] = Message.objects.filter(channel=channel)
     if request.method == "POST":
-        print('post')
         content = request.POST.get("message")
         Message.objects.create(sender=curr_user, channel=channel, content=content)
-        channel = Channel.objects.get_or_create_personal_channel(curr_user, friend)
         context['channel'] = channel
         context['messages'] = Message.objects.filter(channel=channel)
     return render(request, "friendchat/chat.html", context=context)
 
-# class ChatView(View):
+def chat_list_view(request, *args, **kwargs):
+    context = {}
+    curr_user = request.user
+    if not curr_user.is_authenticated:
+        return HttpResponse("You must be logged in to chat with other users")
 
-#     def get_queryset(self):
-#         return Channel.objects.by_user(self.request.user)
-
-#     def get_object(self):
-#         friend_username  = self.kwargs.get("username")
-#         self.friend = User.objects.get(username=friend_username)
-#         obj = Channel.objects.get_or_create_personal_channel(self.request.user, self.other_user)
-#         if obj == None:
-#             raise Http404
-#         return obj
-
-#     def get_context_data(self, **kwargs):
-#         context = {}
-        
-#         return context
-
-#     def get(self, request, **kwargs):
-#         context = self.get_context_data(**kwargs)
-#         return render(request, "friendchat/chat.html", context=context)
-
-#     def post(self, request, **kwargs):
-#         self.object = self.get_object()
-#         channel = self.get_object()
-#         curr_user = request.user
-#         content = request.POST.get("message")
-#         Message.objects.create(sender=curr_user, channel=channel, content=content)
-#         context = self.get_context_data(**kwargs)
-#         return render(request, "friendchat/chat.html", context=context)
+    friend_chat_list = []
+    friends = FriendList.objects.get(user=curr_user)
+    for friend in friends.friends.all():
+        channel = Channel.objects.filter(users__in=[friend]).filter(users__in=[curr_user]).first()
+        try:
+            latest_message = Message.objects.filter(channel=channel).order_by('-pk').first().content
+        except:
+            latest_message = ''
+        friend_chat_list.append([friend, latest_message])
+    context['friend_chat_list'] = friend_chat_list
+    return render(request, "friendchat/chatlist.html", context=context)

@@ -60,7 +60,7 @@ def accept_friend_request(request, *args, **kwargs):
     ajax_content = {}
     if request.method == "GET" and curr_user.is_authenticated:
         friend_request_id = kwargs.get("friend_request_id")
-        if friend_request_id != None:
+        if friend_request_id:
             friend_request = FriendRequest.objects.get(pk=friend_request_id)
             if friend_request.receiver == curr_user:
                 if friend_request:

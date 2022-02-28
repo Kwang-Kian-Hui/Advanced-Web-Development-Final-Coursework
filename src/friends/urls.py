@@ -1,5 +1,7 @@
 from django.urls import path
 from friends import views as fviews
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = "friend_app"
 
@@ -12,3 +14,5 @@ urlpatterns = [
     path('friend_request/<user_id>/', fviews.friend_request_view, name="friend_request_list"),
     path('remove_friend/', fviews.remove_friend, name="remove_friend"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

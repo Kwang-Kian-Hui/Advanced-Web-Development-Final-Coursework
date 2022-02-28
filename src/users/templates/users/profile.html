@@ -57,17 +57,11 @@
 	.material-icons:hover{
 		cursor: pointer;
 	}
-	.confirm-friend-request{
-		color: green;
-	}
 	.confirm-friend-request:hover {
 		opacity: 0.3;
 	}
 	.decline-friend-request:hover {
 		opacity: 0.3;
-	}
-	.decline-friend-request{
-		color: red;
 	}
 	.message-btn-text{
 		font-weight: 500;
@@ -196,9 +190,6 @@
 
 <script type="text/javascript">
 
-	// called from base_js.html
-	//preloadImage("{{profile_image|safe}}", 'id_profile_image')
-
 	function onFriendRequestSent(){
 		location.reload();
 	}
@@ -218,7 +209,6 @@
 	function onFriendRequestDeclined(){
 		location.reload();
 	}
-
 
 	var sendFriendRequestBtn = document.getElementById("id_send_friend_request_btn")
 	if (sendFriendRequestBtn != null){

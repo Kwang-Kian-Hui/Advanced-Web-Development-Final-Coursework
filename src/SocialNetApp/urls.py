@@ -24,7 +24,6 @@ from userposts import views as upviews
 
 
 urlpatterns = [
-    # path('', bviews.home_page, name='home'),
     path('', upviews.home_page, name='home'),
     path('admin/', admin.site.urls),
     path('chat/', include('friendchat.urls')),
