@@ -55,9 +55,9 @@ def login_view(request, *args, **kwargs):
 
 def profile_view(request, *args, **kwargs):
     context = {}
-    userid_search = kwargs.get("user_id")
+    userid = kwargs.get("user_id")
     try:
-        viewed_user = User.objects.get(pk=userid_search)
+        viewed_user = User.objects.get(pk=userid)
     except User.DoesNotExist:
         return HttpResponse("No user of this id found.")
     if User:
