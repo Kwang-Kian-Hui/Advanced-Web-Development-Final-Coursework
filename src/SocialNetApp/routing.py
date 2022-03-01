@@ -1,9 +1,11 @@
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.urls import path
-from friendchat.consumers import ChatConsumer
+from channels.auth import AuthMiddlewareStack
+import friendchat.routing
 
 application = ProtocolTypeRouter({
-    'websocket': URLRouter([
-        path('ws/chat/', ChatConsumer())
-    ])
+    'websocket': AuthMiddlewareStack(
+        URLRouter(
+            friendchat.routing.websocket_urlpatterns
+        )
+    ),
 })

@@ -18,7 +18,6 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
-from base import views as bviews
 from users import views as uviews
 from userposts import views as upviews
 
