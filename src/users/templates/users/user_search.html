@@ -31,12 +31,6 @@
 	.profile-link{
 		color: #000;
 	}
-	/* .checkmark-icon{
-		color: green;
-	}
-	.cancel-icon{
-		color: red;
-	} */
 </style>
 
 <div class="container">
@@ -54,7 +48,7 @@
 				<div class="card-center px-2">
 					<h4 class="card-title">{{profile.0.username}}</h4>
 					{% if profile.1 %}
-					<p class="card-text"><a href="#" onclick="createOrReturnPrivateChat('{{profile.0.profile}}')">Send a Message</a></p>
+					<p class="card-text"><a href="{% url 'user_app:user_profile' user_id=profile.0.pk %}">Send a Message</a></p>
 					{% endif %}
 					
 				</div>
@@ -101,10 +95,4 @@
 	</div>
 </div>
 
-{#%  include 'chat/create_or_return_private_chat.html' %#}
-<script type="text/javascript">
-	function createOrReturnPrivateChat(username){
-		// Just a placeholder
-	}
-</script>
 {% endblock content %}

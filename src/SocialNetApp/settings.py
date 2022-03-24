@@ -25,7 +25,10 @@ SECRET_KEY = '*hwsq@=ij@$#56syrn8njg5lu9-0qc(ueaht&5er0rzypbp3do'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+]
 
 AUTH_USER_MODEL = "users.User"
 AUTHENTICATION_BACKENDS = ( 
@@ -36,16 +39,18 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
-    # 'base',
+    'channels',
     'users',
     'userposts',
     'friends',
+    'friendchat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +81,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'SocialNetApp.wsgi.application'
-
+# WSGI_APPLICATION = 'SocialNetApp.wsgi.application'
+ASGI_APPLICATION = 'SocialNetApp.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

@@ -1,15 +1,13 @@
-from re import I
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-from django.urls import reverse
-from friends.models import *
 from friends.friend_request_status import *
+from friends.models import *
 from friends.utils import *
-from users.models import *
 from users.forms import UserRegistrationForm, UserAuthenticationForm, UserUpdateForm
+from users.models import *
 import os
 
 def registration_view(request, *args, **kwargs):
@@ -57,9 +55,9 @@ def login_view(request, *args, **kwargs):
 
 def profile_view(request, *args, **kwargs):
     context = {}
-    userid_search = kwargs.get("user_id")
+    userid = kwargs.get("user_id")
     try:
-        viewed_user = User.objects.get(pk=userid_search)
+        viewed_user = User.objects.get(pk=userid)
     except User.DoesNotExist:
         return HttpResponse("No user of this id found.")
     if User:
@@ -147,9 +145,8 @@ def edit_user_view(request, *args, **kwargs):
     if request.POST:
         form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
         image_updated = False
-        # retrieve file if it exissts
+        # retrieve file if it exists
         if 'profile_image_file_selector' in request.FILES:
-
             request_file = request.FILES['profile_image_file_selector'] 
             # default path of settings.MEDIA_ROOT
             url = os.path.join(settings.MEDIA_ROOT + "/", str(user.pk))
@@ -161,10 +158,9 @@ def edit_user_view(request, *args, **kwargs):
             image_updated = True
         if form.is_valid():
             form.save()
-            return redirect("users:user_profile", user_id=user.pk)
+            return redirect("user_app:user_profile", user_id=user.pk)
         elif image_updated:
-            print("image updated")
-            return redirect("users:user_profile", user_id=user.pk)
+            return redirect("user_app:user_profile", user_id=user.pk)
         else:
             form = UserUpdateForm(request.POST, instance=request.user,
                 initial = {
@@ -186,5 +182,4 @@ def edit_user_view(request, *args, **kwargs):
         )
         context['form'] = form
     context['max_upload_memory_size'] = settings.DATA_UPLOAD_MAX_MEMORY_SIZE
-    print("render edit user")
     return render(request, "users/edit_user.html", context)

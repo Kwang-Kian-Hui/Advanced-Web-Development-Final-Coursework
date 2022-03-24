@@ -31,20 +31,12 @@
 	.profile-link{
 		color: #000;
 	}
-	.checkmark-icon{
-		color: green;
-	}
-	.cancel-icon{
-		color: red;
-	}
-	
 </style>
 
 <div class="container">
 	<div class="card d-flex flex-column flex-grow-1 p-2">
 
 		{% if matched_friends %}
-		<!-- <div class=""> -->
 		{% for friend in matched_friends %}
 		<div class="card flex-row flex-grow-1 p-2 mx-2 my-2 align-items-center">
 			<a class="profile-link" href="{% url 'user_app:user_profile' user_id=friend.0.pk %}">
@@ -58,7 +50,7 @@
 					<h4 class="card-title">{{friend.0.username|truncatechars:50}}</h4>
 				</a>
 				{% if friend.1 %}
-				<a href="#" onclick="createOrReturnPrivateChat('{{friend.0.id}}')">Send a Message</a>
+				<a href="{% url 'friendchat:friend_chat' friend_id=friend.0.pk %}">Send a Message</a>
 				{% endif %}
 				
 			</div>
@@ -107,5 +99,4 @@
 	
 </div>
 
-{#%  include 'chat/create_or_return_private_chat.html' %#}
 {% endblock content %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+	.profile-image{
+		max-height: 50px;
+		max-width: 50px;
+        border-radius: 12px;
+	}
+	.card{
+		border-radius: 12px;
+	}
+    .message-card{
+        background-color: var(--bg-color);
+        border-radius: 12px;
+    }
+	.profile-card{
+        border: none;
+    }
+    .message-log{
+        color: var(--text-black-700);
+    }
+    .chat-card{
+        border-radius: 12px;
+        background-color: white;
+    }
+    .your-messages{
+        width: fit-content;
+        position: relative;
+        margin-left: auto;
+    }
+    .friend-messages{
+        width: fit-content;
+        position: relative;
+        margin-right: auto;
+    }
+    .submit-btn{
+        background-color: var(--bg-color);
+    }
+</style>
+
+<div class="container">
+	<div class="card p-4">
+        <div class="card flex-row justify-content-center p-3 profile-card">
+            <a class="profile-link" href="{% url 'user_app:user_profile' user_id=friend.pk %}">
+				<div class="card-image m-2">
+					<img class="img-fluid profile-image" src="{{friend.profile_image.url}}" alt="">
+				</div>
+			</a>
+            <h3>{{friend.username}}</h3>
+        </div>
+        <div class="message-card py-3 px-2">
+            {% for message in messages %}
+                {% if message.sender == request.user %}
+                <div class="chat-card my-2 your-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% else %}
+                <div class="chat-card my-2 friend-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form id="message-form" action="" method="post">
+            {% csrf_token %}
+            <input class="card form-control my-2" type="text" name="message" id="message" required>
+            <input class="card submit-btn ml-auto px-4 py-3" type="submit" value="Send" class="btn">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

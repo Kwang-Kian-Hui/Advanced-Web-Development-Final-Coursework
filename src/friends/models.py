@@ -1,7 +1,5 @@
 from django.db import models
 from django.conf import settings
-from django.dispatch import receiver
-from django.utils import timezone
 
 class FriendList(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
@@ -22,7 +20,6 @@ class FriendList(models.Model):
         self.remove_friend(user_to_remove)
 
         removed_user = FriendList.objects.get(user=user_to_remove)
-        # removed_user.remove_user(self.user)
         removed_user.remove_friend(self.user)
 
     def is_mutual_friend(self, friend):

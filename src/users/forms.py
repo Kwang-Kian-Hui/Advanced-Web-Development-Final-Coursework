@@ -14,7 +14,6 @@ class UserRegistrationForm(UserCreationForm):
     # clean functions
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
-
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:

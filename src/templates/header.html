@@ -13,23 +13,14 @@
                     <div class="dropdown dropleft show p-2">
                         <div class="d-flex flex-row">
                             <!-- chats -->
-                            <div class="btn-group dropleft">
-                                <div class="d-flex notifications-icon-container rounded-circle align-items-center mr-3" id="id_notification_dropdown_toggle" data-toggle="dropdown" style="cursor: pointer;">
-                                    <span id="id_chat_notifications_count" class="notify-badge"></span>
-                                    <span class="d-flex material-icons notifications-material-icon m-auto align-items-center">chat_bubble_outline</span>
-                                    <div class="dropdown-menu scrollable-menu" aria-labelledby="id_notification_dropdown_toggle" id="id_chat_notifications_container"></div>
-                                </div>
-                            </div>
+                            <a class="rounded-circle mr-3" href="{% url 'friendchat:friend_chat_list' %}">
+                                <span class="d-flex material-icons notifications-material-icon m-auto align-items-center" style="cursor: pointer;">chat_bubble_outline</span>
+                            </a>
                             
                             <!-- friends -->
-                            <!-- <div class="btn-group dropleft"> -->
-                                <!-- <div class="d-flex notifications-icon-container rounded-circle align-items-center mr-3" id="id_friends_dropdown_toggl e" data-toggle="dropdown"> -->
-                            <!-- <div class="d-flex notifications-icon-container rounded-circle align-items-center mr-3"></div> -->
                             <a class="rounded-circle mr-3" href="{% url 'friend_app:friend_list' user_id=request.user.id %}">
                                 <span class="d-flex material-icons notifications-material-icon m-auto align-items-center" style="cursor: pointer;">people_alt</span>
                             </a>
-                            <!-- </div> -->
-                            <!-- </div> -->
 
                             <!-- profile -->
                             <div class="btn-group dropleft">

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+	.profile-image{
+		max-height: 50px;
+		max-width: 50px;
+        border-radius: 12px;
+	}
+	.card{
+		border-radius: 12px;
+	}
+    .message-card{
+        background-color: var(--bg-color);
+        border-radius: 12px;
+    }
+	.profile-card{
+        border: none;
+    }
+    .message-log{
+        color: var(--text-black-700);
+    }
+    .chat-card{
+        border-radius: 12px;
+        background-color: white;
+    }
+    .your-messages{
+        width: fit-content;
+        position: relative;
+        margin-left: auto;
+    }
+    .friend-messages{
+        width: fit-content;
+        position: relative;
+        margin-right: auto;
+    }
+    .submit-btn{
+        background-color: var(--bg-color);
+    }
+</style>
+
+<div class="container">
+	<div class="card p-4">
+        <div class="d-none" id="room_name">{{ room_name }}</div>
+        <div class="d-none" id="sender">{{ sender }}</div>
+        <div class="card flex-row justify-content-center p-3 profile-card">
+            <a class="profile-link" href="{% url 'user_app:user_profile' user_id=friend.pk %}">
+				<div class="card-image m-2">
+					<img class="img-fluid profile-image" src="{{friend.profile_image.url}}" alt="">
+				</div>
+			</a>
+            <h3>{{friend.username}}</h3>
+        </div>
+        <div class="message-card py-3 px-2">
+            {% for message in messages %}
+                {% if message.sender == request.user %}
+                <div class="chat-card my-2 your-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% else %}
+                <div class="chat-card my-2 friend-messages px-2 py-2">
+                    <div class="message-log">
+                        <h6>{{message.content}}</h6>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form id="message-form" action="" method="post">
+            <input class="card form-control my-2" id="chat-message-input" type="text" name="message" id="message" required><br>
+            <input class="card submit-btn ml-auto px-4 py-3" id="chat-message-submit" type="button" value="Send">
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const roomName = JSON.parse(document.getElementById('room_name').textContent);
+    const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/' + roomName + '/');
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function(e) {
+        if (e.keyCode === 13) {
+            document.querySelector('#chat-message-submit').click();
+        }
+    }
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        const sender = document.getElementById('sender').textContent
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'sender': sender,
+        }))
+        messageInputDom.value = '';
+    }
+
+    chatSocket.onopen = function(e) {
+        console.log("chatSocket opened")
+    }
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        document.querySelector('#chat-log').value += (data.message + '\n');
+    }
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed');
+    }
+</script>
+{% endblock content %}
