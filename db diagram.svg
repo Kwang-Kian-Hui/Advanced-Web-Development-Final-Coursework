@@ -25,8 +25,8 @@
      showgrid="false"
      showborder="false"
      inkscape:zoom="0.48441477"
-     inkscape:cx="345.77806"
-     inkscape:cy="-110.44254"
+     inkscape:cx="360.22849"
+     inkscape:cy="58.833879"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -35,6 +35,39 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs31">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect464"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect460"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect456"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
     <inkscape:path-effect
        effect="bspline"
        id="path-effect106930"
@@ -1293,7 +1326,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107342">User</tspan></text>
+         id="tspan1623">User</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-14.676203,-25.876463)"
@@ -1301,7 +1334,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107344">email</tspan></text>
+         id="tspan1625">email</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-13.978929,-15.756732)"
@@ -1309,9 +1342,9 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="348.87212"
-         id="tspan107348"><tspan
+         id="tspan1629"><tspan
            dx="0 25.3125 20.839844 23.828125 17.070312 25.3125 24.023438 38.90625"
-           id="tspan107346">username</tspan></tspan></text>
+           id="tspan1627">username</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-0.38621586,-0.87274593)"
@@ -1319,7 +1352,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107350">username</tspan></text>
+         id="tspan1631">username</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-0.38621586,-5.6076505)"
@@ -1327,7 +1360,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect17631);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="303.62017"
-         id="tspan107352">date_joined</tspan></text>
+         id="tspan1633">date_joined</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-0.38621586,-8.4114752)"
@@ -1335,7 +1368,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect21175);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-167.86719"
          y="364.92876"
-         id="tspan107354">last_login</tspan></text>
+         id="tspan1635">last_login</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.1586476,-9.6704353)"
@@ -1343,7 +1376,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect24107);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-166.4082"
          y="423.31743"
-         id="tspan107356">profile_img</tspan></text>
+         id="tspan1637">profile_img</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.1586476,-9.6704353)"
@@ -1351,7 +1384,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect31343);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="478.78618"
-         id="tspan107358">is_active</tspan></text>
+         id="tspan1639">is_active</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.1586476,-9.6704353)"
@@ -1359,7 +1392,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect34075);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-163.48828"
          y="538.63384"
-         id="tspan107360">is_admin</tspan></text>
+         id="tspan1641">is_admin</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.1586476,-9.6704353)"
@@ -1367,7 +1400,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect36523);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-163.48828"
          y="592.6436"
-         id="tspan107362">is_staff</tspan></text>
+         id="tspan1643">is_staff</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.1586476,-9.6704353)"
@@ -1375,7 +1408,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect39213);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="645.19438"
-         id="tspan107364">is_superuser</tspan></text>
+         id="tspan1645">is_superuser</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,108.69203,-0.61300444)"
@@ -1383,7 +1416,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107366">CharField</tspan></text>
+         id="tspan1647">CharField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,108.69203,-5.3479084)"
@@ -1391,7 +1424,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect17631-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="303.62017"
-         id="tspan107368">DateTimeField</tspan></text>
+         id="tspan1649">DateTimeField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,108.69203,-8.1517334)"
@@ -1399,7 +1432,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect21175-6);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-167.86719"
          y="364.92876"
-         id="tspan107370">DateTimeField</tspan></text>
+         id="tspan1651">DateTimeField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,107.9196,-9.4106934)"
@@ -1407,7 +1440,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect24107-7);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-166.4082"
          y="423.31743"
-         id="tspan107372">ImageField</tspan></text>
+         id="tspan1653">ImageField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,107.9196,-9.4106934)"
@@ -1415,7 +1448,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect31343-1);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="478.78618"
-         id="tspan107374">BooleanField</tspan></text>
+         id="tspan1655">BooleanField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,107.9196,-9.4106934)"
@@ -1423,7 +1456,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect34075-5)"><tspan
          x="-163.48828"
          y="538.63384"
-         id="tspan107376">BooleanField</tspan></text>
+         id="tspan1657">BooleanField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,107.9196,-9.4106934)"
@@ -1431,7 +1464,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect36523-0)"><tspan
          x="-163.48828"
          y="592.6436"
-         id="tspan107378">BooleanField</tspan></text>
+         id="tspan1659">BooleanField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,107.9196,-9.4106934)"
@@ -1439,7 +1472,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect39213-8)"><tspan
          x="-164.94727"
          y="645.19438"
-         id="tspan107380">BooleanField</tspan></text>
+         id="tspan1661">BooleanField</tspan></text>
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"
@@ -1447,7 +1480,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect45751);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="245.23242"
          y="185.38384"
-         id="tspan107382">EmailField</tspan></text>
+         id="tspan1663">EmailField</tspan></text>
     <rect
        style="fill:#ffffff;stroke-width:0.987373"
        id="rect82-8"
@@ -1468,7 +1501,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107384">UserPost</tspan></text>
+         id="tspan1665">UserPost</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,281.4709,52.907676)"
@@ -1476,7 +1509,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107386">content</tspan></text>
+         id="tspan1667">content</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,295.76088,77.911393)"
@@ -1484,7 +1517,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-7);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107388">img</tspan></text>
+         id="tspan1669">img</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,295.76088,73.176489)"
@@ -1492,7 +1525,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect17631-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="303.62017"
-         id="tspan107390">timestamp</tspan></text>
+         id="tspan1671">timestamp</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,295.76088,70.372664)"
@@ -1500,7 +1533,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect21175-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-167.86719"
          y="364.92876"
-         id="tspan107392">poster</tspan></text>
+         id="tspan1673">poster</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,404.83913,78.171135)"
@@ -1508,7 +1541,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107394">ImageField</tspan></text>
+         id="tspan1675">ImageField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,404.83913,73.436231)"
@@ -1516,7 +1549,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect17631-5-2);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="303.62017"
-         id="tspan107396">DateTimeField</tspan></text>
+         id="tspan1677">DateTimeField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,404.83913,70.632406)"
@@ -1524,7 +1557,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect21175-6-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-167.86719"
          y="364.92876"
-         id="tspan107398">FK  (User)</tspan></text>
+         id="tspan1679">FK  (User)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,296.1471,78.784139)"
@@ -1532,7 +1565,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect45751-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="245.23242"
          y="185.38384"
-         id="tspan107400">TextField</tspan></text>
+         id="tspan1681">TextField</tspan></text>
     <circle
        id="path56196"
        style="fill:#000000;stroke:none;stroke-width:0.264583"
@@ -1604,7 +1637,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086-7);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107402">FriendList</tspan></text>
+         id="tspan1683">FriendList</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-309.53355,56.386945)"
@@ -1612,7 +1645,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-18);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107404">user</tspan></text>
+         id="tspan1685">user</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-295.24357,81.390664)"
@@ -1620,7 +1653,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107406">friends</tspan></text>
+         id="tspan1687">friends</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-229.04137,81.650406)"
@@ -1628,7 +1661,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107408">ManyToManyField(User)</tspan></text>
+         id="tspan1689">ManyToManyField(User)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-324.6248,82.26341)"
@@ -1636,7 +1669,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect45751-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="245.23242"
          y="185.38384"
-         id="tspan107410">OneToOneField(User)</tspan></text>
+         id="tspan1691">OneToOneField(User)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.0943711px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m -145.0056,100.02934 c 0,17.81639 -1e-5,35.6327 -1e-5,53.4489"
@@ -1681,7 +1714,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086-7-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107412">FriendRequest</tspan></text>
+         id="tspan1693">FriendRequest</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-309.85827,-46.470964)"
@@ -1689,7 +1722,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-18-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107414">sender</tspan></text>
+         id="tspan1695">sender</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-294.50995,-20.408911)"
@@ -1697,7 +1730,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107416">receiver</tspan></text>
+         id="tspan1697">receiver</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-294.94906,-6.3266201)"
@@ -1705,7 +1738,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4-1);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107418">pending</tspan></text>
+         id="tspan1699">pending</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-294.91501,7.8743644)"
@@ -1713,7 +1746,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4-0);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107420">timestamp</tspan></text>
+         id="tspan1701">timestamp</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-155.08402,-20.149169)"
@@ -1721,7 +1754,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107422">FK(User)</tspan></text>
+         id="tspan1703">FK(User)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-173.85897,-6.0843144)"
@@ -1729,7 +1762,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107424">BooleanField</tspan></text>
+         id="tspan1705">BooleanField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-182.08589,8.6628616)"
@@ -1737,7 +1770,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-7);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107426">DateTimeField</tspan></text>
+         id="tspan1707">DateTimeField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-154.74226,-33.940092)"
@@ -1745,7 +1778,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-1);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107428">FK(User)</tspan></text>
+         id="tspan1709">FK(User)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.140661px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m -145.33032,-2.8285686 c 0,26.5555006 -1e-5,53.1108836 -1e-5,79.6661016"
@@ -1790,7 +1823,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086-7-3-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107430">Channel</tspan></text>
+         id="tspan1711">Channel</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,232.02997,-108.07807)"
@@ -1798,7 +1831,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-18-3-6);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107432">name</tspan></text>
+         id="tspan1713">name</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,247.37829,-82.016023)"
@@ -1806,7 +1839,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4-6);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107434">users</tspan></text>
+         id="tspan1715">users</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,340.84453,-81.756283)"
@@ -1814,12 +1847,12 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107436">ManyToManyField</tspan><tspan
+         id="tspan1717">ManyToManyField</tspan><tspan
          x="-164.94727"
          y="287.71001"
-         id="tspan107440"><tspan
+         id="tspan1721"><tspan
            dx="0 18.164062 29.277344 20.839844 23.828125 17.070312"
-           id="tspan107438">(User)</tspan></tspan></text>
+           id="tspan1719">(User)</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,384.05625,-95.547203)"
@@ -1827,7 +1860,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-1-0);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107442">CharField</tspan></text>
+         id="tspan1723">CharField</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.0901993px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 396.55792,-64.435683 c 0,17.028796 -1e-5,34.057515 -1e-5,51.086129"
@@ -1992,7 +2025,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect2086-7-3-3-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-91.232422"
          y="224.06548"
-         id="tspan107444">Message</tspan></text>
+         id="tspan1725">Message</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-16.825376,-138.42453)"
@@ -2000,7 +2033,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect11508-18-3-6-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-105.83008"
          y="283.18462"
-         id="tspan107446">content</tspan></text>
+         id="tspan1727">content</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.4770564,-112.36248)"
@@ -2008,7 +2041,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4-6-5);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107448">sender</tspan></text>
+         id="tspan1729">sender</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-1.6643954,-97.815922)"
@@ -2016,7 +2049,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-0-4-6-5-0);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107450">channel</tspan></text>
+         id="tspan1731">channel</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,138.14238,-112.10274)"
@@ -2024,7 +2057,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-5-3);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107452">FK(User)</tspan></text>
+         id="tspan1733">FK(User)</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,135.2009,-125.89366)"
@@ -2032,7 +2065,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-1-0-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107454">TextField</tspan></text>
+         id="tspan1735">TextField</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,119.03834,-96.723538)"
@@ -2040,7 +2073,7 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15513-6-6-1-1-0-8-8);fill:#000000;fill-opacity:1;stroke:none"><tspan
          x="-164.94727"
          y="236.47368"
-         id="tspan107456">FK(Channel)</tspan></text>
+         id="tspan1737">FK(Channel)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.117925px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 147.70257,-94.782147 c 0,22.26316 -1e-5,44.526219 -1e-5,66.789141"
@@ -2091,12 +2124,6 @@
        inkscape:original-d="m 147.74486,-51.888212 c 16.38601,2.65e-4 32.77176,2.65e-4 49.15725,0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 153.68469,-56.667389 c 0,3.140866 0,6.281468 0,9.421807"
-       id="path106916"
-       inkscape:path-effect="#path-effect106918"
-       inkscape:original-d="m 153.68469,-56.667389 c 2.7e-4,3.140866 2.7e-4,6.281468 0,9.421807" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 188.70923,-47.38213 c 0,-3.413435 0,-6.827131 0,-10.241095"
        id="path106920"
        inkscape:path-effect="#path-effect106922"
@@ -2113,5 +2140,23 @@
        id="path106928"
        inkscape:path-effect="#path-effect106930"
        inkscape:original-d="m 34.13698,8.4659715 c 4.460833,2.646e-4 8.921398,2.646e-4 13.381699,0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 155.56375,-57.532865 c 0,3.541801 0,7.08352 0,10.625158"
+       id="path94435-8"
+       inkscape:path-effect="#path-effect456"
+       inkscape:original-d="m 155.56375,-57.532865 c 9e-5,3.541801 9e-5,7.08352 0,10.625158" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 155.47531,-51.951155 c -2.58314,-1.343233 -5.16643,-2.686545 -7.74986,-4.029931"
+       id="path94997-2"
+       inkscape:path-effect="#path-effect460"
+       inkscape:original-d="m 155.47531,-51.951155 c -2.58316,-1.343191 -5.16645,-2.6865 -7.74986,-4.029931" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 147.60145,-48.045222 c 2.62467,-1.302002 5.24929,-2.60398 7.87386,-3.905933"
+       id="path95001-6"
+       inkscape:path-effect="#path-effect464"
+       inkscape:original-d="m 147.60145,-48.045222 c 2.62474,-1.301858 5.24936,-2.603836 7.87386,-3.905933" />
   </g>
 </svg>
